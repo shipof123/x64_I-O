@@ -1,9 +1,16 @@
 section .text
 strlen:
+  xor rdx, rdx
+  .loop:
+  cmp [rsi + rdx], 0
+  je .exit
+  inc rdx
+  jmp .loop
+  .exit:
+  ret ; value in rdx
 
-  .loop
 puts:
-  ; string stored on rsi
+  ; string passed through rsi
   mov rax, 1
   call strlen
- syscall
+  syscall
