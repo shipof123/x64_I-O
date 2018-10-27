@@ -4,7 +4,7 @@ strlen:
   dec rdx          ; This compensates for the INC that is happening first.
 .next:
   inc rdx
-  cmp byte [rsi + rdx], 0
+  cmp byte [rsi + rdx], 0 ; check for NULL descriptor.
   jne .next
   ret
 
