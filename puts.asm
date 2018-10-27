@@ -8,9 +8,13 @@ strlen:
   jne .next
   ret
 
-puts:
+fputs:
   ; string passed through rsi
   call strlen      ; Result is in RDX
 
   mov rax, 1
   syscall
+  
+puts:
+  mov rdi, 1
+  call fputs
